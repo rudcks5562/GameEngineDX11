@@ -1,11 +1,9 @@
 #pragma once
-using namespace std;
-
 
 struct GameDesc
 {
 	shared_ptr<class IExecute> app = nullptr;
-	wstring appName = L"GameCoding";
+	wstring appName = L"gc";
 	HINSTANCE hInstance = 0;
 	HWND hWnd = 0;
 	float width = 800;
@@ -30,7 +28,7 @@ private:
 	void Update();
 
 	static LRESULT CALLBACK WndProc(HWND handle, UINT message, WPARAM wParam, LPARAM lParam);
-	
+
 private:
 	GameDesc _desc;
 };

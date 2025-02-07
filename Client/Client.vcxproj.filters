@@ -18,7 +18,7 @@
     <ClCompile Include="Main.cpp">
       <Filter>Main</Filter>
     </ClCompile>
-    <ClCompile Include="triangleDemo.cpp">
+    <ClCompile Include="TriangleDemo.cpp">
       <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,12 +29,12 @@
     <ClInclude Include="Main.h">
       <Filter>Main</Filter>
     </ClInclude>
-    <ClInclude Include="triangleDemo.h">
+    <ClInclude Include="TriangleDemo.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="..\Shaders\triangle.hlsl">
+    <FxCompile Include="..\Shaders\Triangle.fx">
       <Filter>Shader</Filter>
     </FxCompile>
   </ItemGroup>

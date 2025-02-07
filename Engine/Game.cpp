@@ -13,11 +13,11 @@ WPARAM Game::Run(GameDesc& desc)
 	// 2) 윈도우 창 생성
 	if (!InitInstance(SW_SHOWNORMAL))
 		return FALSE;
-		
+
 	GRAPHICS->Init(_desc.hWnd);
 	TIME->Init();
 	INPUT->Init(_desc.hWnd);
-	
+
 	_desc.app->Init();
 
 	MSG msg = { 0 };

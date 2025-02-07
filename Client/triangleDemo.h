@@ -2,14 +2,10 @@
 
 #include "IExecute.h"
 
-class triangleDemo : public IExecute
+class TriangleDemo : public IExecute
 {
 
 public:
-
-
-
-
 
 	// IExecute을(를) 통해 상속됨
 	void Init() override;
@@ -17,6 +13,13 @@ public:
 	void Update() override;
 
 	void Render() override;
+
+	shared_ptr<Shader> _shader;
+	vector<VertexData> _vertices;
+	shared_ptr<VertexBuffer> _buffer;
+
+
+
 
 };
 
