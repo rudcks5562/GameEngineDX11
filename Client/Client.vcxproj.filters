@@ -24,6 +24,9 @@
     <ClCompile Include="QuadDemo.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="ConstBufferDemo.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -38,12 +41,18 @@
     <ClInclude Include="QuadDemo.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="ConstBufferDemo.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\Shaders\Triangle.fx">
       <Filter>Shader</Filter>
     </FxCompile>
     <FxCompile Include="..\Shaders\Quad.fx">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Shaders\ConstBuffer.fx">
       <Filter>Shader</Filter>
     </FxCompile>
   </ItemGroup>
