@@ -117,6 +117,11 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)Libraries\Lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+      <EntryPointName />
+      <ShaderType>Effect</ShaderType>
+    </FxCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -137,6 +142,7 @@
   <ItemGroup>
     <ClInclude Include="Main.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="QuadDemo.h" />
     <ClInclude Include="TriangleDemo.h" />
   </ItemGroup>
   <ItemGroup>
@@ -144,9 +150,11 @@
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="QuadDemo.cpp" />
     <ClCompile Include="TriangleDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <FxCompile Include="..\Shaders\Quad.fx" />
     <FxCompile Include="..\Shaders\Triangle.fx">
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
