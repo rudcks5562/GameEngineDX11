@@ -140,6 +140,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CameraDemo.h" />
+    <ClInclude Include="CameraScript.h" />
     <ClInclude Include="ConstBufferDemo.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="pch.h" />
@@ -147,6 +149,8 @@
     <ClInclude Include="TriangleDemo.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CameraDemo.cpp" />
+    <ClCompile Include="CameraScript.cpp" />
     <ClCompile Include="ConstBufferDemo.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="pch.cpp">
@@ -164,6 +168,7 @@
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </EntryPointName>
     </FxCompile>
+    <FxCompile Include="..\Shaders\World.fx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
