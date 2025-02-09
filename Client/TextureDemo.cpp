@@ -29,8 +29,9 @@ void TextureDemo::Init()
 	_camera->AddComponent(make_shared<Camera>());// component add
 	_camera->AddComponent(make_shared<CameraScript>());// sc add
 
-	
+	_texture=RESOURCES->Load<Texture>(L"Veigar", L"..\\Resources\\Textures\\veigar.jpg");
 
+	_camera->GetTransform()->SetPosition(Vec3(0.f, 0.f, -2.f));
 
 }
 
@@ -49,7 +50,7 @@ void TextureDemo::Render()
 	_shader->GetMatrix("World")->SetMatrix((float*)&_world);
 	_shader->GetMatrix("View")->SetMatrix((float*)& Camera::S_MatView);
 	_shader->GetMatrix("Projection")->SetMatrix((float*)&Camera::S_MatProjection);
-
+	_shader->GetSRV("Texture0")->SetResource(_texture->GetComPtr().Get());
 
 
 	uint32 stride = _vertexBuffer->GetStride();
