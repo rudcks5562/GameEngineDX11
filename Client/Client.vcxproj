@@ -143,9 +143,11 @@
     <ClInclude Include="CameraDemo.h" />
     <ClInclude Include="CameraScript.h" />
     <ClInclude Include="ConstBufferDemo.h" />
+    <ClInclude Include="HeightMapDemo.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="QuadDemo.h" />
+    <ClInclude Include="SamplerDemo.h" />
     <ClInclude Include="TextureDemo.h" />
     <ClInclude Include="TriangleDemo.h" />
   </ItemGroup>
@@ -153,17 +155,20 @@
     <ClCompile Include="CameraDemo.cpp" />
     <ClCompile Include="CameraScript.cpp" />
     <ClCompile Include="ConstBufferDemo.cpp" />
+    <ClCompile Include="HeightMapDemo.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="QuadDemo.cpp" />
+    <ClCompile Include="SamplerDemo.cpp" />
     <ClCompile Include="TextureDemo.cpp" />
     <ClCompile Include="TriangleDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\Shaders\ConstBuffer.fx" />
     <FxCompile Include="..\Shaders\Quad.fx" />
+    <FxCompile Include="..\Shaders\Sampler.fx" />
     <FxCompile Include="..\Shaders\Triangle.fx">
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
@@ -171,6 +176,7 @@
       </EntryPointName>
     </FxCompile>
     <FxCompile Include="..\Shaders\Texture.fx" />
+    <FxCompile Include="..\Shaders\Terrain.fx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

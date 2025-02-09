@@ -10,7 +10,7 @@ void TextureDemo::Init()
 
 	_geometry = make_shared<Geometry<VertexTextureData>>();
 
-	GeometryHelper::CreateQuad(_geometry); 
+	GeometryHelper::CreateGrid(_geometry,256,256); 
 
 
 	// 쉐이더 경로 상대경로 아닌 깔끔히.
