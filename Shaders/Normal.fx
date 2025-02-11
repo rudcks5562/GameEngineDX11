@@ -4,7 +4,6 @@ matrix Projection;
 Texture2D Texture0;
 float3 LightDir;
 
-
 struct VertexInput
 {
     float4 position : POSITION;
@@ -17,7 +16,6 @@ struct VertexOutput
     float4 position : SV_POSITION;
     float2 uv : TEXCOORD;
     float3 normal : NORMAL;
-
 };
 
 VertexOutput VS(VertexInput input)
@@ -28,8 +26,7 @@ VertexOutput VS(VertexInput input)
     output.position = mul(output.position, Projection);
 
     output.uv = input.uv;
-    
-    output.normal = mul(input.normal, (float3x3) World);// 단위벡터이므로 회전만 적용하려함? 
+    output.normal = mul(input.normal, (float3x3) World);
 
     return output;
 }
@@ -40,11 +37,9 @@ float4 PS(VertexOutput input) : SV_TARGET
 {
     float3 normal = normalize(input.normal);
     float3 light = -LightDir;
-    
-    //return float4(1, 1, 1, 1)*dot(light, normal); // 내적인데 단위벡터이므로 코사인사잇각만 남음.
-    
-    
-    return Texture0.Sample(Sampler0, input.uv) * dot(light, normal);// 원래 색상 * 내적-> 결과 광원 비?
+
+	//return float4(1, 1, 1, 1) * dot(light, normal);
+    return Texture0.Sample(Sampler0, input.uv) * dot(light, normal);
 }
 
 RasterizerState FillModeWireFrame

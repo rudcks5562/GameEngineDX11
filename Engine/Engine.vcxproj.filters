@@ -120,6 +120,12 @@
     <ClInclude Include="Camera.h">
       <Filter>Component</Filter>
     </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Engine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshRenderer.h">
+      <Filter>Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -198,6 +204,12 @@
       <Filter>Component</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Engine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshRenderer.cpp">
       <Filter>Component</Filter>
     </ClCompile>
   </ItemGroup>

@@ -46,6 +46,9 @@
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="NormalDemo.cpp" />
+    <ClCompile Include="MeshDemo.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -79,6 +82,9 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="NormalDemo.h" />
+    <ClInclude Include="MeshDemo.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\Shaders\Triangle.fx">
@@ -99,6 +105,8 @@
     <FxCompile Include="..\Shaders\Terrain.fx">
       <Filter>Shader</Filter>
     </FxCompile>
-    <FxCompile Include="..\Shaders\Normal.fx" />
+    <FxCompile Include="..\Shaders\Normal.fx">
+      <Filter>Shader</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

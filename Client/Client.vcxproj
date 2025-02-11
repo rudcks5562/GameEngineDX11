@@ -145,6 +145,7 @@
     <ClInclude Include="ConstBufferDemo.h" />
     <ClInclude Include="HeightMapDemo.h" />
     <ClInclude Include="Main.h" />
+    <ClInclude Include="MeshDemo.h" />
     <ClInclude Include="NormalDemo.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="QuadDemo.h" />
@@ -158,6 +159,7 @@
     <ClCompile Include="ConstBufferDemo.cpp" />
     <ClCompile Include="HeightMapDemo.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MeshDemo.cpp" />
     <ClCompile Include="NormalDemo.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
