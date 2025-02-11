@@ -13,6 +13,9 @@
     <Filter Include="Main\Camera">
       <UniqueIdentifier>{620161d6-b03b-4cbb-aaab-5b260358d7c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shader\Common">
+      <UniqueIdentifier>{0aed4d7c-e886-4945-b03f-69fe34da0274}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -47,6 +50,9 @@
     </ClCompile>
     <ClCompile Include="NormalDemo.cpp" />
     <ClCompile Include="MeshDemo.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalTestDemo.cpp">
       <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
@@ -85,6 +91,9 @@
     <ClInclude Include="MeshDemo.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="GlobalTestDemo.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\Shaders\Triangle.fx">
@@ -106,6 +115,12 @@
       <Filter>Shader</Filter>
     </FxCompile>
     <FxCompile Include="..\Shaders\Normal.fx">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Shaders\Global.fx">
+      <Filter>Shader\Common</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Shaders\GlobalTest.fx">
       <Filter>Shader</Filter>
     </FxCompile>
   </ItemGroup>
