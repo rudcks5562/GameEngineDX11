@@ -143,6 +143,7 @@
     <ClInclude Include="CameraDemo.h" />
     <ClInclude Include="CameraScript.h" />
     <ClInclude Include="ConstBufferDemo.h" />
+    <ClInclude Include="DepthStencilDemo.h" />
     <ClInclude Include="GlobalTestDemo.h" />
     <ClInclude Include="HeightMapDemo.h" />
     <ClInclude Include="Main.h" />
@@ -158,6 +159,7 @@
     <ClCompile Include="CameraDemo.cpp" />
     <ClCompile Include="CameraScript.cpp" />
     <ClCompile Include="ConstBufferDemo.cpp" />
+    <ClCompile Include="DepthStencilDemo.cpp" />
     <ClCompile Include="GlobalTestDemo.cpp" />
     <ClCompile Include="HeightMapDemo.cpp" />
     <ClCompile Include="Main.cpp" />
