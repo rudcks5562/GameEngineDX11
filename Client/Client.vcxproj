@@ -140,10 +140,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AmbientDemo.h" />
     <ClInclude Include="CameraDemo.h" />
     <ClInclude Include="CameraScript.h" />
     <ClInclude Include="ConstBufferDemo.h" />
     <ClInclude Include="DepthStencilDemo.h" />
+    <ClInclude Include="DiffuseDemo.h" />
+    <ClInclude Include="EmissiveDemo.h" />
     <ClInclude Include="GlobalTestDemo.h" />
     <ClInclude Include="HeightMapDemo.h" />
     <ClInclude Include="Main.h" />
@@ -152,14 +155,18 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="QuadDemo.h" />
     <ClInclude Include="SamplerDemo.h" />
+    <ClInclude Include="SpecularDemo.h" />
     <ClInclude Include="TextureDemo.h" />
     <ClInclude Include="TriangleDemo.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AmbientDemo.cpp" />
     <ClCompile Include="CameraDemo.cpp" />
     <ClCompile Include="CameraScript.cpp" />
     <ClCompile Include="ConstBufferDemo.cpp" />
     <ClCompile Include="DepthStencilDemo.cpp" />
+    <ClCompile Include="DiffuseDemo.cpp" />
+    <ClCompile Include="EmissiveDemo.cpp" />
     <ClCompile Include="GlobalTestDemo.cpp" />
     <ClCompile Include="HeightMapDemo.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -170,13 +177,18 @@
     </ClCompile>
     <ClCompile Include="QuadDemo.cpp" />
     <ClCompile Include="SamplerDemo.cpp" />
+    <ClCompile Include="SpecularDemo.cpp" />
     <ClCompile Include="TextureDemo.cpp" />
     <ClCompile Include="TriangleDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\Shaders\ConstBuffer.fx" />
+    <FxCompile Include="..\Shaders\Emissive.fx" />
     <FxCompile Include="..\Shaders\Global.fx" />
     <FxCompile Include="..\Shaders\GlobalTest.fx" />
+    <FxCompile Include="..\Shaders\Light_Ambient.fx" />
+    <FxCompile Include="..\Shaders\Light_Diffuse.fx" />
+    <FxCompile Include="..\Shaders\Light_Specular.fx" />
     <FxCompile Include="..\Shaders\Normal.fx" />
     <FxCompile Include="..\Shaders\Quad.fx" />
     <FxCompile Include="..\Shaders\Sampler.fx" />

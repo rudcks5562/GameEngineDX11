@@ -58,6 +58,18 @@
     <ClCompile Include="DepthStencilDemo.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="AmbientDemo.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="DiffuseDemo.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="SpecularDemo.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="EmissiveDemo.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -100,6 +112,18 @@
     <ClInclude Include="DepthStencilDemo.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="AmbientDemo.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="DiffuseDemo.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="SpecularDemo.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="EmissiveDemo.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\Shaders\Triangle.fx">
@@ -127,6 +151,18 @@
       <Filter>Shader\Common</Filter>
     </FxCompile>
     <FxCompile Include="..\Shaders\GlobalTest.fx">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Shaders\Light_Ambient.fx">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Shaders\Light_Diffuse.fx">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Shaders\Light_Specular.fx">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Shaders\Emissive.fx">
       <Filter>Shader</Filter>
     </FxCompile>
   </ItemGroup>
