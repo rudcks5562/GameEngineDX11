@@ -70,6 +70,9 @@
     <ClCompile Include="EmissiveDemo.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="LightingDemo.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -124,6 +127,9 @@
     <ClInclude Include="EmissiveDemo.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="LightingDemo.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\Shaders\Triangle.fx">
@@ -164,6 +170,12 @@
     </FxCompile>
     <FxCompile Include="..\Shaders\Emissive.fx">
       <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Shaders\Lighting.fx">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Shaders\Light.fx">
+      <Filter>Shader\Common</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

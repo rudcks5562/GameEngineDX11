@@ -149,6 +149,7 @@
     <ClInclude Include="EmissiveDemo.h" />
     <ClInclude Include="GlobalTestDemo.h" />
     <ClInclude Include="HeightMapDemo.h" />
+    <ClInclude Include="LightingDemo.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="MeshDemo.h" />
     <ClInclude Include="NormalDemo.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="EmissiveDemo.cpp" />
     <ClCompile Include="GlobalTestDemo.cpp" />
     <ClCompile Include="HeightMapDemo.cpp" />
+    <ClCompile Include="LightingDemo.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MeshDemo.cpp" />
     <ClCompile Include="NormalDemo.cpp" />
@@ -186,6 +188,8 @@
     <FxCompile Include="..\Shaders\Emissive.fx" />
     <FxCompile Include="..\Shaders\Global.fx" />
     <FxCompile Include="..\Shaders\GlobalTest.fx" />
+    <FxCompile Include="..\Shaders\Light.fx" />
+    <FxCompile Include="..\Shaders\Lighting.fx" />
     <FxCompile Include="..\Shaders\Light_Ambient.fx" />
     <FxCompile Include="..\Shaders\Light_Diffuse.fx" />
     <FxCompile Include="..\Shaders\Light_Specular.fx" />
