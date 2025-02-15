@@ -77,7 +77,11 @@ pass name {                                             \
 } // PASS_VP(P0,VS,PS) - way to use 
 
 //function ?
-
+float3 CameraPosition()
+{
+    return -V._41_42_43;
+    
+}
 
 
 

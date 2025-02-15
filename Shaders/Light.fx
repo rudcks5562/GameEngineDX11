@@ -52,12 +52,58 @@ float4 ComputeLight(float3 normal, float2 uv, float3 worldPosition)
     float4 emissiveColor = 0;
     
     //ambient
+    {
+        float4 color = GlobalLight.ambient * Material.ambient;
+        ambientColor = DiffuseMap.Sample(LinearSampler, uv)*color;
+
+      
+    
+    }
     
     //diffuse
+    {
+        float4 color = DiffuseMap.Sample(LinearSampler, uv);
     
+        float value = dot(-GlobalLight.direction, normalize(normal));
+        diffuseColor = color * value * GlobalLight.diffuse * Material.diffuse;
+     
+    }
     //specular
+    {
+        float3 R = GlobalLight.direction- (2 * normal * dot(GlobalLight.direction, normal));
+        R = normalize(R);
+        
+    //내적의 결과는 스칼라이기 때문에 다시 방향벡터를 곱해줘야함.
+        float3 cameraPosition = CameraPosition();
+        float3 E = normalize(cameraPosition - worldPosition); // 상대 - 나 
     
+        float value = saturate(dot(R, E)); // clamp (0~1)
+    
+        float specular = pow(value, 10); // 보정   
+    
+        specularColor = GlobalLight.specular * Material.specular * specular;
+    
+
+        
+    }
     //emissive
+    {
+        float3 cameraPosition = CameraPosition();
+        float3 E = cameraPosition - worldPosition;
+        float value = saturate(dot(E, normal));
+        float emissive = 1.0f - value;
+    
+        emissive = smoothstep(0.0f, 1.0f, emissive);
+        emissive = pow(emissive, 2);
+        emissiveColor = GlobalLight.emmisive* Material.emmisive * emissive;
+        
+        
+        
+        
+    }
+    
+    
+    return ambientColor + diffuseColor + specularColor + emissiveColor;
 }
 
 

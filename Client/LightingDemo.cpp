@@ -68,22 +68,36 @@ void LightingDemo::Update()
 
 	RENDER->Update();
 
-	//
-	
+	{
+		LightDesc lightDesc;
+		lightDesc.ambient = Vec4(0.5f);
+		lightDesc.diffuse = Vec4(1.f);
+		lightDesc.specular = Vec4(1.f, 1.f, 1.f, 1.f);
+		lightDesc.direction = Vec3(0.f, -1.f, 0.f);
+		RENDER->PushLightData(lightDesc);
+	}
 
 	{
-		Vec4 materialEmissive(1.f,0.f,0.f,1.f);
-		_shader->GetVector("MaterialEmissive")->SetFloatVector((float*)&materialEmissive);
+		MaterialDesc desc;
+		desc.ambient = Vec4(0.2f);
+		desc.diffuse = Vec4(1.f);
+		desc.specular = Vec4(1.f);
+		//desc.emissive = Color(0.3f, 0.f, 0.f, 0.5f);
 
-
+		RENDER->PushMaterialData(desc);
 		_obj->Update();
 	}
+	
 	{
-		Vec4 materialEmissive(1.f, 0.f, 0.f, 1.f);
-		_shader->GetVector("MaterialEmissive")->SetFloatVector((float*)&materialEmissive);
+		MaterialDesc desc;
+		desc.ambient = Vec4(0.5f);
+		desc.diffuse = Vec4(1.f);
+		//desc.specular = Color(0.5f, 0.5f, 0.5f, 1.f);
+		//desc.emissive = Color(1.f, 0.f, 0.f, 1.f);
 
+		RENDER->PushMaterialData(desc);
 		_obj2->Update();
-	}
+	}	
 
 
 }
