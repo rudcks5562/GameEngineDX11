@@ -73,6 +73,9 @@
     <ClCompile Include="LightingDemo.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="MaterialDemo.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -128,6 +131,9 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="LightingDemo.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialDemo.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>

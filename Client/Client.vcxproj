@@ -151,6 +151,7 @@
     <ClInclude Include="HeightMapDemo.h" />
     <ClInclude Include="LightingDemo.h" />
     <ClInclude Include="Main.h" />
+    <ClInclude Include="MaterialDemo.h" />
     <ClInclude Include="MeshDemo.h" />
     <ClInclude Include="NormalDemo.h" />
     <ClInclude Include="pch.h" />
@@ -172,6 +173,7 @@
     <ClCompile Include="HeightMapDemo.cpp" />
     <ClCompile Include="LightingDemo.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MaterialDemo.cpp" />
     <ClCompile Include="MeshDemo.cpp" />
     <ClCompile Include="NormalDemo.cpp" />
     <ClCompile Include="pch.cpp">
