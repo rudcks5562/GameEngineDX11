@@ -19,7 +19,8 @@ MeshOutput VS(VertexTextureNormalTangent input)
 
 float4 PS(MeshOutput input) : SV_TARGET
 {
-    ComputeNormalMapping(input.normal,input.tangent,input.uv);
+    ComputeNormalMapping(input.normal, input.tangent, input.uv);
+    
 
     
     float4 color = ComputeLight(input.normal,input.uv,input.worldPosition);

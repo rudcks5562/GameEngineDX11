@@ -6,6 +6,7 @@ cbuffer GlobalBuffer
     matrix V;
     matrix P;
     matrix VP;
+    matrix VInv;
 };
 cbuffer TransformBuffer
 {

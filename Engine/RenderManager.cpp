@@ -38,6 +38,7 @@ void RenderManager::PushGlobalData(const Matrix& view, const Matrix& projection)
 	_globalDesc.P = projection;
 	_globalDesc.V = view;
 	_globalDesc.VP = view * projection;// 데이터 입력
+	_globalDesc.VInv = view.Invert();
 	_globalBuffer->CopyData(_globalDesc);// 버퍼에 복사.
 
 	_globalEffectBuffer->SetConstantBuffer(_globalBuffer->GetComPtr().Get());
