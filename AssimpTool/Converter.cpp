@@ -51,6 +51,27 @@ void Converter::ExportMaterialData(wstring savePath)
 
 void Converter::ReadModelData(aiNode* node, int32 index, int32 parent)
 {
+	shared_ptr<asBone> bone = make_shared<asBone>();
+	bone->index = index;
+	bone->parent = parent;
+	bone->name = node->mName.C_Str();
+
+	//relative
+	Matrix transform(node->mTransformation[0]);
+	bone->transform = transform.Transpose();
+	Matrix matParent = Matrix::Identity;
+	if(parent>=0)
+		matParent = _bones[parent]->transform;
+
+	
+	bone->transform = bone->transform * matParent;  
+	_bones.push_back(bone);
+
+	ReadMeshData(node,index);// 따로해도 되는데 여기서 하는게 좋다.
+
+	for (uint32 i = 0; i < node->mNumChildren; i++) {
+		ReadModelData(node->mChildren[i], _bones.size(), index);
+	}
 }
 
 void Converter::ReadMeshData(aiNode* node, int32 bone)
@@ -176,7 +197,61 @@ void Converter::WriteMaterialData(wstring finalPath)
 
 }
 
-string Converter::WriteTexture(string saveFolder, string file)
+
+std::string Converter::WriteTexture(string saveFolder, string file)
 {
-	return "";
+	string fileName = filesystem::path(file).filename().string();
+	string folderName = filesystem::path(saveFolder).filename().string();
+
+	const aiTexture* srcTexture = _scene->GetEmbeddedTexture(file.c_str());
+	if (srcTexture)
+	{
+		string pathStr = (filesystem::path(saveFolder) / fileName).string();
+
+		if (srcTexture->mHeight == 0)
+		{
+			//shared_ptr<FileUtils> file = make_shared<FileUtils>();
+			//file->Open(Utils::ToWString(pathStr), FileMode::Write);
+			//file->Write(srcTexture->pcData, srcTexture->mWidth);
+		}
+		else
+		{
+			D3D11_TEXTURE2D_DESC desc;
+			ZeroMemory(&desc, sizeof(D3D11_TEXTURE2D_DESC));
+			desc.Width = srcTexture->mWidth;
+			desc.Height = srcTexture->mHeight;
+			desc.MipLevels = 1;
+			desc.ArraySize = 1;
+			desc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+			desc.SampleDesc.Count = 1;
+			desc.SampleDesc.Quality = 0;
+			desc.Usage = D3D11_USAGE_IMMUTABLE;
+
+			D3D11_SUBRESOURCE_DATA subResource = { 0 };
+			subResource.pSysMem = srcTexture->pcData;
+
+			ComPtr<ID3D11Texture2D> texture;
+			HRESULT hr = DEVICE->CreateTexture2D(&desc, &subResource, texture.GetAddressOf());
+			CHECK(hr);
+
+			DirectX::ScratchImage img;
+			::CaptureTexture(DEVICE.Get(), DC.Get(), texture.Get(), img);
+
+			// Save To File
+			hr = DirectX::SaveToDDSFile(*img.GetImages(), DirectX::DDS_FLAGS_NONE, Utils::ToWString(fileName).c_str());
+			CHECK(hr);
+		}
+	}
+	else
+	{
+		string originStr = (filesystem::path(_assetPath) / folderName / file).string();
+		Utils::Replace(originStr, "\\", "/");
+
+		string pathStr = (filesystem::path(saveFolder) / fileName).string();
+		Utils::Replace(pathStr, "\\", "/");
+
+		::CopyFileA(originStr.c_str(), pathStr.c_str(), false);
+	}
+
+	return fileName;
 }
