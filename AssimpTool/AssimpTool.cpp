@@ -9,7 +9,8 @@ void AssimpTool::Init()
 		converter->ReadAssetFile(L"House/House.fbx");//fbx->memory
 
 		//memory->customdata
-
+		converter->ExportMaterialData(L"House/House");
+		converter->ExportModelData(L"House/House");
 		//customdata->memory
 	}
 
