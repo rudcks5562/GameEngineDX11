@@ -7,6 +7,7 @@ enum class ComponentType : uint8
 {
 	Transform,
 	MeshRenderer,
+	ModelRenderer,
 	Camera,
 	Animator,
 	// ...
@@ -18,7 +19,7 @@ enum class ComponentType : uint8
 enum
 {
 	FIXED_COMPONENT_COUNT = static_cast<uint8>(ComponentType::End) - 1
-};
+}; 
 
 class Component
 {

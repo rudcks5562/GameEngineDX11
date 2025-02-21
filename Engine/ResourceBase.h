@@ -14,7 +14,7 @@ enum class ResourceType : int8
 
 enum
 {
-	RESOURCE_TYPE_COUNT = static_cast<uint8>(ResourceType::End)
+	RESOURCE_TYPE_COUNT = static_cast<int8>(ResourceType::End)
 };
 
 class ResourceBase : public enable_shared_from_this<ResourceBase>

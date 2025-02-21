@@ -198,6 +198,7 @@
     <FxCompile Include="..\Shaders\Light_Ambient.fx" />
     <FxCompile Include="..\Shaders\Light_Diffuse.fx" />
     <FxCompile Include="..\Shaders\Light_Specular.fx" />
+    <FxCompile Include="..\Shaders\ModelDemo.fx" />
     <FxCompile Include="..\Shaders\Normal.fx" />
     <FxCompile Include="..\Shaders\NormalMapping.fx" />
     <FxCompile Include="..\Shaders\Quad.fx" />
