@@ -6,20 +6,20 @@ void AssimpTool::Init()
 {
 	{
 		shared_ptr<Converter> converter = make_shared<Converter>();
-		//converter->ReadAssetFile(L"House/House.fbx");//fbx->memory
+		converter->ReadAssetFile(L"Tank/Tank.fbx");//fbx->memory
 
 		//memory->customdata
-		//converter->ExportMaterialData(L"House/House");
-		//converter->ExportModelData(L"House/House");
+		converter->ExportMaterialData(L"Tank/Tank");
+		converter->ExportModelData(L"Tank/Tank");
 		//customdata->memory
 	}
 	{
-		shared_ptr<Converter> converter = make_shared<Converter>();
-		converter->ReadAssetFile(L"Tower/Tower.fbx");//fbx->memory
+		//shared_ptr<Converter> converter = make_shared<Converter>();
+		//converter->ReadAssetFile(L"Tower/Tower.fbx");//fbx->memory
 
 		//memory->customdata
-		converter->ExportMaterialData(L"Tower/Tower");
-		converter->ExportModelData(L"Tower/Tower");
+		//converter->ExportMaterialData(L"Tower/Tower");
+		//converter->ExportModelData(L"Tower/Tower");
 		//customdata->memory
 
 

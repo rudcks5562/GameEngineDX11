@@ -11,6 +11,7 @@ public:
 	void Update() override;
 	void Render() override;
 	void CreateTower();
+	void CreateTank();
 
 private:
 	shared_ptr<Shader> _shader;
