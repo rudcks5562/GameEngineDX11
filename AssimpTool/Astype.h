@@ -33,4 +33,76 @@ struct asMaterial {
 	string normalFile;
 };
 
+struct asBlendWeight {
+	Vec4 indices = Vec4{ 0,0,0,0 };
+	Vec4 weights = Vec4{ 0,0,0,0 };
 
+	void Set(uint32 index, uint32 boneIndex, float weight) {
+		float i = (float)boneIndex;
+		float w = weight;
+
+		switch (index) {
+		case 0:
+			indices.x = i;
+			weights.x = w;
+			break;
+		case 1:
+			indices.y = i;
+			weights.y = w;
+			break;
+		case 2:
+			indices.z = i;
+			weights.z = w;
+			break;
+		case 3:
+			indices.w = i;
+			weights.w = w;
+			break;
+		}
+	}
+};
+struct asBoneWeights
+{
+	using Pair = pair<int32, float>;
+	vector<Pair> boneWeights;
+
+
+	void AddWeights(uint32 boneIndex, float weight) {
+
+		if (weight <= 0.0f) {
+			return;
+		}
+		auto findIt = std::find_if(boneWeights.begin(), boneWeights.end(), 
+			[weight](const Pair& p) {return weight>p.second; });
+	
+		boneWeights.insert(findIt, Pair(boneIndex, weight));
+	
+	}
+	void Normalize() {
+		if (boneWeights.size() >= 4) {
+			boneWeights.resize(4);
+		}
+		float totalWeight = 0.f;
+		for (const auto& item : boneWeights) {
+			totalWeight += item.second;
+		}
+		float scale = 1.f / totalWeight;
+		for ( auto& item : boneWeights) {
+			item.second *= scale;
+		}
+	}
+	asBlendWeight GetBlendWeight() {
+		asBlendWeight blendWeights;
+
+		for (uint32 i = 0; i < boneWeights.size(); i++) {
+			if (i >= 4) {
+				break;
+			}
+			blendWeights.Set(i, boneWeights[i].first, boneWeights[i].second);
+		}
+
+
+		return blendWeights;
+	}
+
+};

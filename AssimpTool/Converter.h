@@ -25,6 +25,14 @@ private:
 	void WriteMaterialData(wstring finalPath);
 	string WriteTexture(string saveFolder, string file);
 
+
+private:
+	void ReadSkinData();
+
+private:
+	uint32 GetBoneIndex(const string& name);
+
+
 private:
 	wstring _assetPath = L"../Resources/Assets/";
 	wstring _modelPath = L"../Resources/Models/";
