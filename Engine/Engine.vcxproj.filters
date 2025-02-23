@@ -150,9 +150,6 @@
     <ClInclude Include="ModelRenderer.h">
       <Filter>Component</Filter>
     </ClInclude>
-    <ClInclude Include="ImGuiManager.h">
-      <Filter>Utils\IMGUI</Filter>
-    </ClInclude>
     <ClInclude Include="imstb_rectpack.h">
       <Filter>Utils\IMGUI</Filter>
     </ClInclude>
@@ -176,6 +173,9 @@
     </ClInclude>
     <ClInclude Include="imgui_internal.h">
       <Filter>Utils\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGuiManager.h">
+      <Filter>Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -287,9 +287,6 @@
     <ClCompile Include="imgui_widgets.cpp">
       <Filter>Utils\IMGUI</Filter>
     </ClCompile>
-    <ClCompile Include="ImGuiManager.cpp">
-      <Filter>Utils\IMGUI</Filter>
-    </ClCompile>
     <ClCompile Include="imgui.cpp">
       <Filter>Utils\IMGUI</Filter>
     </ClCompile>
@@ -304,6 +301,9 @@
     </ClCompile>
     <ClCompile Include="imgui_impl_win32.cpp">
       <Filter>Utils\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGuiManager.cpp">
+      <Filter>Managers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

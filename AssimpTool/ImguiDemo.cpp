@@ -19,11 +19,11 @@ void ImguiDemo::Init()
 	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
 	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
 
-	// Setup Dear ImGui style
+	//// Setup Dear ImGui style
 	//ImGui::StyleColorsDark();
 	//ImGui::StyleColorsLight();
 
-	// Setup Platform/Renderer backends
+	//// Setup Platform/Renderer backends
 	//ImGui_ImplWin32_Init(GAME->GetGameDesc().hWnd);
 	//ImGui_ImplDX11_Init(DEVICE.Get(), DC.Get());
 }
