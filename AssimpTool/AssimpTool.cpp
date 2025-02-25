@@ -24,6 +24,21 @@ void AssimpTool::Init()
 
 
 	}
+	{
+		shared_ptr<Converter> converter = make_shared<Converter>();
+		converter->ReadAssetFile(L"Kachujin/Idle.fbx");//fbx->memory
+		converter->ExportAnimationData(L"Kachujin/Idle");
+	}
+	{
+		shared_ptr<Converter> converter = make_shared<Converter>();
+		converter->ReadAssetFile(L"Kachujin/Run.fbx");//fbx->memory
+		converter->ExportAnimationData(L"Kachujin/Run");
+	}
+	{
+		shared_ptr<Converter> converter = make_shared<Converter>();
+		converter->ReadAssetFile(L"Kachujin/Slash.fbx");//fbx->memory
+		converter->ExportAnimationData(L"Kachujin/Slash");
+	}
 
 
 }
