@@ -6,11 +6,11 @@ void AssimpTool::Init()
 {
 	{
 		shared_ptr<Converter> converter = make_shared<Converter>();
-		converter->ReadAssetFile(L"Tank/Tank.fbx");//fbx->memory
+		converter->ReadAssetFile(L"Kachujin/Mesh.fbx");//fbx->memory
 
 		//memory->customdata
-		converter->ExportMaterialData(L"Tank/Tank");
-		converter->ExportModelData(L"Tank/Tank");
+		converter->ExportMaterialData(L"Kachujin/Kachujin");
+		converter->ExportModelData(L"Kachujin/Kachujin");
 		//customdata->memory
 	}
 	{
