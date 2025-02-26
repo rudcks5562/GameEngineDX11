@@ -189,6 +189,7 @@
     <ClCompile Include="TriangleDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <FxCompile Include="..\Shaders\AnimationDemo.fx" />
     <FxCompile Include="..\Shaders\ConstBuffer.fx" />
     <FxCompile Include="..\Shaders\Emissive.fx" />
     <FxCompile Include="..\Shaders\Global.fx" />

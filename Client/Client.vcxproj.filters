@@ -199,5 +199,8 @@
     <FxCompile Include="..\Shaders\ModelDemo.fx">
       <Filter>Shader</Filter>
     </FxCompile>
+    <FxCompile Include="..\Shaders\AnimationDemo.fx">
+      <Filter>Shader</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
