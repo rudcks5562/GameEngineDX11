@@ -170,7 +170,7 @@ void Model::ReadMaterial(wstring filename)
 	BindCacheInfo();
 }
 
-void Model::ReadModel(wstring filename)
+void Model::ReadModel(wstring filename)// bone, mesh(vt,idc)+cache
 {
 	wstring fullPath = _modelPath + filename + L".mesh";
 

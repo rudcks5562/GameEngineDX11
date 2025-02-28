@@ -25,6 +25,9 @@ void RenderManager::Init(shared_ptr<Shader> shader)
 	_boneBuffer->Create();
 	_boneEffectBuffer = _shader->GetConstantBuffer("BoneBuffer");
 
+	_keyframeBuffer = make_shared<ConstantBuffer<KeyFrameDesc>>();
+	_keyframeBuffer->Create();
+	_keyframeEffectBuffer = _shader->GetConstantBuffer("KeyframeBuffer");
 
 
 
@@ -84,3 +87,13 @@ void RenderManager::PushBoneData(const BoneDesc& desc)
 	//shader쪽으로 밀어넣기 cbuff 사용해서
 
 }
+void RenderManager::PushKeyFrameData(const KeyFrameDesc& desc)
+{
+	_keyframeDesc = desc;
+	_keyframeBuffer->CopyData(_keyframeDesc);
+	_keyframeEffectBuffer->SetConstantBuffer(_keyframeBuffer->GetComPtr().Get());
+
+	//shader쪽으로 밀어넣기 cbuff 사용해서
+
+}
+
