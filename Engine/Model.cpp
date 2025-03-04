@@ -1,55 +1,21 @@
 #include "pch.h"
 #include "Model.h"
+#include "Utils.h"
 #include "FileUtils.h"
 #include "tinyxml2.h"
 #include <filesystem>
 #include "Material.h"
 #include "ModelMesh.h"
-#include "Utils.h"
-
 #include "ModelAnimation.h"
-
 
 Model::Model()
 {
+
 }
 
 Model::~Model()
 {
-}
-void Model::ReadAnimation(wstring filename) {
 
-	wstring fullPath = _modelPath + filename + L".clip";
-
-	shared_ptr<FileUtils> file = make_shared<FileUtils>();
-	file->Open(fullPath,FileMode::Read);
-
-	shared_ptr<ModelAnimation> animation = make_shared<ModelAnimation>();
-	
-	animation->name = Utils::ToWString(file->Read<string>());
-	animation->duration = file->Read<float>();
-	animation->frameRate = file->Read<float>();
-	animation->frameCount = file->Read<uint32>();
-
-	uint32 keyframesCount = file->Read<uint32>();
-	for (uint32 i = 0; i < keyframesCount; i++)
-	{
-		shared_ptr<ModelKeyframe> keyframe = make_shared<ModelKeyframe>();
-		keyframe->boneName = Utils::ToWString(file->Read<string>());
-
-		uint32 size = file->Read<uint32>();
-
-		if (size > 0)
-		{
-			keyframe->transforms.resize(size);
-			void* ptr = &keyframe->transforms[0];
-			file->Read(&ptr, sizeof(ModelKeyframeData) * size);
-		}
-
-		animation->keyframes[keyframe->boneName] = keyframe;
-	}
-
-	_animations.push_back(animation);
 }
 
 void Model::ReadMaterial(wstring filename)
@@ -170,7 +136,7 @@ void Model::ReadMaterial(wstring filename)
 	BindCacheInfo();
 }
 
-void Model::ReadModel(wstring filename)// bone, mesh(vt,idc)+cache
+void Model::ReadModel(wstring filename)
 {
 	wstring fullPath = _modelPath + filename + L".mesh";
 
@@ -239,6 +205,42 @@ void Model::ReadModel(wstring filename)// bone, mesh(vt,idc)+cache
 	BindCacheInfo();
 }
 
+void Model::ReadAnimation(wstring filename)
+{
+	wstring fullPath = _modelPath + filename + L".clip";
+
+	shared_ptr<FileUtils> file = make_shared<FileUtils>();
+	file->Open(fullPath, FileMode::Read);
+
+	shared_ptr<ModelAnimation> animation = make_shared<ModelAnimation>();
+
+	animation->name = Utils::ToWString(file->Read<string>());
+	animation->duration = file->Read<float>();
+	animation->frameRate = file->Read<float>();
+	animation->frameCount = file->Read<uint32>();
+
+	uint32 keyframesCount = file->Read<uint32>();
+
+	for (uint32 i = 0; i < keyframesCount; i++)
+	{
+		shared_ptr<ModelKeyframe> keyframe = make_shared<ModelKeyframe>();
+		keyframe->boneName = Utils::ToWString(file->Read<string>());
+
+		uint32 size = file->Read<uint32>();
+
+		if (size > 0)
+		{
+			keyframe->transforms.resize(size);
+			void* ptr = &keyframe->transforms[0];
+			file->Read(&ptr, sizeof(ModelKeyframeData) * size);
+		}
+
+		animation->keyframes[keyframe->boneName] = keyframe;
+	}
+
+	_animations.push_back(animation);
+}
+
 std::shared_ptr<Material> Model::GetMaterialByName(const wstring& name)
 {
 	for (auto& material : _materials)
@@ -271,16 +273,18 @@ std::shared_ptr<ModelBone> Model::GetBoneByName(const wstring& name)
 
 	return nullptr;
 }
-shared_ptr<ModelAnimation> Model::GetAnimationByName(wstring name)
-{
-	for (auto& animation : _animations) {
 
+std::shared_ptr<ModelAnimation> Model::GetAnimationByName(wstring name)
+{
+	for (auto& animation : _animations)
+	{
 		if (animation->name == name)
 			return animation;
 	}
 
 	return nullptr;
 }
+
 void Model::BindCacheInfo()
 {
 	// Mesh¿¡ Material Ä³½Ì
@@ -322,4 +326,3 @@ void Model::BindCacheInfo()
 		}
 	}
 }
-

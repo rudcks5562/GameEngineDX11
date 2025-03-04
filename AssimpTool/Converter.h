@@ -19,7 +19,7 @@ private :
 	void ReadMeshData(aiNode* node, int32 bone);
 	void WriteModelFile(wstring finalPath);
 
-
+	void ReadKeyframeData(shared_ptr<asAnimation> animation, aiNode* node, map<string, shared_ptr<asAnimationNode>>& cache);
 private:
 
 	void ReadMaterialData();

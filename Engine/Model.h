@@ -14,12 +14,7 @@ public:
 	void ReadMaterial(wstring filename);
 	void ReadModel(wstring filename);
 	void ReadAnimation(wstring filename);
-private:
-	wstring _modelPath = L"../Resources/Models/";
-	wstring _texturePath = L"../Resources/Textures/";
-	//후일에 리소스매니저에서 호출하는 방식으로 변경
 
-public:
 	uint32 GetMaterialCount() { return static_cast<uint32>(_materials.size()); }
 	vector<shared_ptr<Material>>& GetMaterials() { return _materials; }
 	shared_ptr<Material> GetMaterialByIndex(uint32 index) { return _materials[index]; }
@@ -40,7 +35,12 @@ public:
 	shared_ptr<ModelAnimation> GetAnimationByIndex(UINT index) { return (index < 0 || index >= _animations.size()) ? nullptr : _animations[index]; }
 	shared_ptr<ModelAnimation> GetAnimationByName(wstring name);
 
+private:
+	void BindCacheInfo();
 
+private:
+	wstring _modelPath = L"../Resources/Models/";
+	wstring _texturePath = L"../Resources/Textures/";
 
 private:
 	shared_ptr<ModelBone> _root;
@@ -48,8 +48,5 @@ private:
 	vector<shared_ptr<ModelBone>> _bones;
 	vector<shared_ptr<ModelMesh>> _meshes;
 	vector<shared_ptr<ModelAnimation>> _animations;
-private:
-	void BindCacheInfo();
-
 };
 

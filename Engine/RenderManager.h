@@ -36,11 +36,11 @@ struct MaterialDesc
 };
 
 // bone
-#define MAX_MODEL_TRANSFORM 250
+#define MAX_MODEL_TRANSFORMS 250
 #define MAX_MODEL_KEYFRAMES 500
 struct BoneDesc {
 
-	Matrix transforms[MAX_MODEL_TRANSFORM];
+	Matrix transforms[MAX_MODEL_TRANSFORMS];
 };
 struct KeyFrameDesc {
 
