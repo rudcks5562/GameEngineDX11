@@ -204,6 +204,7 @@
     <FxCompile Include="..\Shaders\NormalMapping.fx" />
     <FxCompile Include="..\Shaders\Quad.fx" />
     <FxCompile Include="..\Shaders\Sampler.fx" />
+    <FxCompile Include="..\Shaders\SkyDemo.fx" />
     <FxCompile Include="..\Shaders\Triangle.fx">
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
@@ -212,6 +213,7 @@
     </FxCompile>
     <FxCompile Include="..\Shaders\Texture.fx" />
     <FxCompile Include="..\Shaders\Terrain.fx" />
+    <FxCompile Include="..\Shaders\TweenDemo.fx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

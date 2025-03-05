@@ -14,11 +14,28 @@ struct KeyframeDesc
     float speed;
     float2 padding;
 };
-
-cbuffer KeyframeBuffer
+struct TweenFrameDesc
 {
-    KeyframeDesc Keyframes;
+    float tweenDuration;
+    float tweenRatio;
+    float tweenSumTime;
+    float padding;
+    KeyframeDesc curr;
+    KeyframeDesc next;
+    
 };
+
+//cbuffer KeyframeBuffer
+//{
+ //   KeyframeDesc Keyframes;
+//};
+
+cbuffer TweenBuffer
+{
+    TweenFrameDesc TweenFrames;
+    
+};
+
 
 cbuffer BoneBuffer
 {
@@ -28,44 +45,27 @@ cbuffer BoneBuffer
 uint BoneIndex;
 Texture2DArray TransformMap;
 
-//
-//matrix GetAnimationMatrix(VertexTextureNormalTangentBlend input)
-//{
-//	float indices[4] = { input.blendIndices.x, input.blendIndices.y, input.blendIndices.z, input.blendIndices.w };
-//	float weights[4] = { input.blendWeights.x, input.blendWeights.y, input.blendWeights.z, input.blendWeights.w };
-//
-//	int animIndex = Keyframes.animIndex;
-//	int currFrame = Keyframes.currFrame;
-//	int nextFrame = Keyframes.nextFrame;
-//
-//	float4 c0, c1, c2, c3;
-//	matrix curr = 0;
-//	matrix transform = 0;
-//
-//	for (int i = 0; i < 4; i++)
-//	{
-//		c0 = TransformMap.Load(int4(indices[i] * 4 + 0, currFrame, animIndex, 0));
-//		c1 = TransformMap.Load(int4(indices[i] * 4 + 1, currFrame, animIndex, 0));
-//		c2 = TransformMap.Load(int4(indices[i] * 4 + 2, currFrame, animIndex, 0));
-//		c3 = TransformMap.Load(int4(indices[i] * 4 + 3, currFrame, animIndex, 0));
-//
-//		curr = matrix(c0, c1, c2, c3);
-//		transform += mul(weights[i], curr);
-//	}
-//
-//	return transform;
-//}
 
 matrix GetAnimationMatrix(VertexTextureNormalTangentBlend input)
 {
     float indices[4] = { input.blendIndices.x, input.blendIndices.y, input.blendIndices.z, input.blendIndices.w };
     float weights[4] = { input.blendWeights.x, input.blendWeights.y, input.blendWeights.z, input.blendWeights.w };
 
-    int animIndex = Keyframes.animIndex;
-    int currFrame = Keyframes.currFrame;
-    int nextFrame = Keyframes.nextFrame;// 보간
-    float ratio = Keyframes.ratio;
-
+    int animIndex[2];
+    int currFrame[2];
+    int nextFrame[2];
+    float ratio [2];// 애니메이션이 2개로 늘어남(현재, 다음)- 서로간 보간.
+    
+    animIndex[0] = TweenFrames.curr.animIndex;
+    currFrame[0] = TweenFrames.curr.currFrame;
+    nextFrame[0] = TweenFrames.curr.nextFrame;
+    ratio[0] = TweenFrames.curr.ratio;
+    
+    animIndex[1] = TweenFrames.next.animIndex;
+    currFrame[1] = TweenFrames.next.currFrame;
+    nextFrame[1] = TweenFrames.next.nextFrame;
+    ratio[1] = TweenFrames.next.ratio;
+    
     float4 c0, c1, c2, c3;
     float4 n0, n1, n2, n3;
 
@@ -75,19 +75,39 @@ matrix GetAnimationMatrix(VertexTextureNormalTangentBlend input)
 
     for (int i = 0; i < 4; i++)
     {
-        c0 = TransformMap.Load(int4(indices[i] * 4 + 0, currFrame, animIndex, 0));
-        c1 = TransformMap.Load(int4(indices[i] * 4 + 1, currFrame, animIndex, 0));
-        c2 = TransformMap.Load(int4(indices[i] * 4 + 2, currFrame, animIndex, 0));
-        c3 = TransformMap.Load(int4(indices[i] * 4 + 3, currFrame, animIndex, 0));
+        c0 = TransformMap.Load(int4(indices[i] * 4 + 0, currFrame[0], animIndex[0], 0));
+        c1 = TransformMap.Load(int4(indices[i] * 4 + 1, currFrame[0], animIndex[0], 0));
+        c2 = TransformMap.Load(int4(indices[i] * 4 + 2, currFrame[0], animIndex[0], 0));
+        c3 = TransformMap.Load(int4(indices[i] * 4 + 3, currFrame[0], animIndex[0], 0));
         curr = matrix(c0, c1, c2, c3);
 
-        n0 = TransformMap.Load(int4(indices[i] * 4 + 0, nextFrame, animIndex, 0));
-        n1 = TransformMap.Load(int4(indices[i] * 4 + 1, nextFrame, animIndex, 0));
-        n2 = TransformMap.Load(int4(indices[i] * 4 + 2, nextFrame, animIndex, 0));
-        n3 = TransformMap.Load(int4(indices[i] * 4 + 3, nextFrame, animIndex, 0));
+        n0 = TransformMap.Load(int4(indices[i] * 4 + 0, nextFrame[0], animIndex[0], 0));
+        n1 = TransformMap.Load(int4(indices[i] * 4 + 1, nextFrame[0], animIndex[0], 0));
+        n2 = TransformMap.Load(int4(indices[i] * 4 + 2, nextFrame[0], animIndex[0], 0));
+        n3 = TransformMap.Load(int4(indices[i] * 4 + 3, nextFrame[0], animIndex[0], 0));
         next = matrix(n0, n1, n2, n3);
 
-        matrix result = lerp(curr, next, ratio);
+        matrix result = lerp(curr, next, ratio[0]);
+        
+        // 다음 애니메이션이 있는지 체크.
+        
+        if (animIndex[1] >= 0)
+        {
+            c0 = TransformMap.Load(int4(indices[i] * 4 + 0, currFrame[1], animIndex[1], 0));
+            c1 = TransformMap.Load(int4(indices[i] * 4 + 1, currFrame[1], animIndex[1], 0));
+            c2 = TransformMap.Load(int4(indices[i] * 4 + 2, currFrame[1], animIndex[1], 0));
+            c3 = TransformMap.Load(int4(indices[i] * 4 + 3, currFrame[1], animIndex[1], 0));
+            curr = matrix(c0, c1, c2, c3);
+
+            n1 = TransformMap.Load(int4(indices[i] * 4 + 1, nextFrame[1], animIndex[1], 0));
+            n2 = TransformMap.Load(int4(indices[i] * 4 + 2, nextFrame[1], animIndex[1], 0));
+            n3 = TransformMap.Load(int4(indices[i] * 4 + 3, nextFrame[1], animIndex[1], 0));
+            n0 = TransformMap.Load(int4(indices[i] * 4 + 0, nextFrame[1], animIndex[1], 0));
+            next = matrix(n0, n1, n2, n3);
+
+            matrix nextResult = lerp(curr, next, ratio[1]);
+            result = lerp(result, nextResult, TweenFrames.tweenRatio);
+        }
 
         transform += mul(weights[i], result);
     }

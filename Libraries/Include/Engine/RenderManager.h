@@ -56,7 +56,31 @@ struct KeyFrameDesc {
 
 
 };
+struct TweenDesc
+{
+	TweenDesc()
+	{
+		curr.animIndex = 0;
+		next.animIndex = -1;
+	}
 
+	void ClearNextAnim()
+	{
+		next.animIndex = -1;
+		next.currFrame = 0;
+		next.nextFrame = 0;
+		next.sumTime = 0;
+		tweenSumTime = 0;
+		tweenRatio = 0;
+	}
+
+	float tweenDuration = 1.0f;
+	float tweenRatio = 0.f;
+	float tweenSumTime = 0.f;
+	float padding = 0.f;
+	KeyFrameDesc curr;
+	KeyFrameDesc next;
+};
 
 class RenderManager
 {
@@ -71,6 +95,7 @@ public:
 	void PushMaterialData(const MaterialDesc& desc);
 	void PushBoneData(const BoneDesc& desc);
 	void PushKeyFrameData(const KeyFrameDesc& decs);
+	void PushTweenData(const TweenDesc& desc);
 
 
 
@@ -102,5 +127,9 @@ private:
 	shared_ptr<ConstantBuffer<KeyFrameDesc>> _keyframeBuffer;
 	ComPtr<ID3DX11EffectConstantBuffer> _keyframeEffectBuffer;
 
+
+	TweenDesc _tweenDesc;
+	shared_ptr<ConstantBuffer<TweenDesc>> _tweenBuffer;
+	ComPtr<ID3DX11EffectConstantBuffer> _tweenEffectBuffer;
 };
 

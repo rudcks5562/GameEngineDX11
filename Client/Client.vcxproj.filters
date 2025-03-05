@@ -202,5 +202,11 @@
     <FxCompile Include="..\Shaders\AnimationDemo.fx">
       <Filter>Shader</Filter>
     </FxCompile>
+    <FxCompile Include="..\Shaders\TweenDemo.fx">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Shaders\SkyDemo.fx">
+      <Filter>Shader</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

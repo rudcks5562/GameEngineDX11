@@ -29,9 +29,11 @@ void RenderManager::Init(shared_ptr<Shader> shader)
 	_keyframeBuffer->Create();
 	_keyframeEffectBuffer = _shader->GetConstantBuffer("KeyframeBuffer");
 
+	_tweenBuffer = make_shared<ConstantBuffer<TweenDesc>>();
+	_tweenBuffer->Create();
+	_tweenEffectBuffer = _shader->GetConstantBuffer("TweenBuffer");
 
-
-}
+}// 분리시켜야함.
 
 void RenderManager::Update()
 {
@@ -94,6 +96,14 @@ void RenderManager::PushKeyFrameData(const KeyFrameDesc& desc)
 	_keyframeEffectBuffer->SetConstantBuffer(_keyframeBuffer->GetComPtr().Get());
 
 	//shader쪽으로 밀어넣기 cbuff 사용해서
+
+}
+
+void RenderManager::PushTweenData(const TweenDesc& desc)
+{
+	_tweenDesc = desc;
+	_tweenBuffer->CopyData(_tweenDesc);
+	_tweenEffectBuffer->SetConstantBuffer(_tweenBuffer->GetComPtr().Get());
 
 }
 
