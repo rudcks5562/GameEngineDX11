@@ -102,12 +102,27 @@ void Game::Update()
 {
 	TIME->Update();
 	INPUT->Update();
-
+	ShowFps();
 	GRAPHICS->RenderBegin();
 	GUI->Update();
 	_desc.app->Update();
 	_desc.app->Render();
 	GUI->Render();
 	GRAPHICS->RenderEnd();
+}
+
+void Game::ShowFps()
+{
+	uint32 fps = GET_SINGLE(TimeManager)->GetFps();
+
+	WCHAR text[100]=L"";
+	::wsprintf(text, L"FPS : %d",fps);
+
+
+
+	::SetWindowText(_desc.hWnd, text);
+
+
+
 }
 

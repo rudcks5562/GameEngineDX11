@@ -56,16 +56,13 @@ struct KeyFrameDesc {
 
 
 };
-struct TweenDesc
-{
-	TweenDesc()
-	{
+struct TweenDesc {
+
+	TweenDesc() {
 		curr.animIndex = 0;
 		next.animIndex = -1;
 	}
-
-	void ClearNextAnim()
-	{
+	void ClearNextAnim() {
 		next.animIndex = -1;
 		next.currFrame = 0;
 		next.nextFrame = 0;
@@ -73,14 +70,16 @@ struct TweenDesc
 		tweenSumTime = 0;
 		tweenRatio = 0;
 	}
-
+	
 	float tweenDuration = 1.0f;
 	float tweenRatio = 0.f;
 	float tweenSumTime = 0.f;
 	float padding = 0.f;
+
 	KeyFrameDesc curr;
 	KeyFrameDesc next;
 };
+
 
 class RenderManager
 {
