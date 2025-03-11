@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AmbientDemo" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAAAAAIAAAAAAEAAAAAAAAAAAAAABACACAAAAA=</HashCode>
+      <FileName>AmbientDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraDemo" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAIAAAAAEAAAAAgAAAAAgwAADACACAAAEA=</HashCode>
+      <FileName>CameraDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConstBufferDemo" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAIAAAAAEAAAAAgAAAAAgwAADACAAAAAEA=</HashCode>
+      <FileName>ConstBufferDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DepthStencilDemo" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAAAAAIAAAAAAEAAAAAAAAAAAAAABACACAAAAA=</HashCode>
+      <FileName>DepthStencilDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiffuseDemo" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAAAAAIAAAAAAEAAAAAAAAAAAAAABACACAAAAA=</HashCode>
+      <FileName>DiffuseDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmissiveDemo" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAAAAAIAAAAAAEAAAAAAAAAAAAAABACACAAAAA=</HashCode>
+      <FileName>EmissiveDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GlobalTestDemo" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAAAAAIAAAAAAAAAAAAAAAAAAAAABACACAAAAA=</HashCode>
+      <FileName>GlobalTestDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HeightMapDemo" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAQAIAAAAQEAAAAAgAAAAAgAAABACACAAAEA=</HashCode>
+      <FileName>HeightMapDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InstancingDemo" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAIAAAAAAAAAAAAgAAAAAAACBACBCAACgA=</HashCode>
+      <FileName>InstancingDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightingDemo" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAAAAAIAAAAAAEAAAAAAAAAAAAAABACACAAAAA=</HashCode>
+      <FileName>LightingDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MaterialDemo" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAAAAAIAAAAAAEAAAAAAAAAAAAAABACACAAAAA=</HashCode>
+      <FileName>MaterialDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeshDemo" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAAAAAIAAAAAAAAAAAAAAAAAAAAABACACAAAAA=</HashCode>
+      <FileName>MeshDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeshInstanceDemo" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAIAAAAAAAAAAAAgAAAAAAACBACBCAACgA=</HashCode>
+      <FileName>MeshInstanceDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NormalDemo" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAQAIAAAAAEAAAAAgAAACAgAAABACACAAAEA=</HashCode>
+      <FileName>NormalDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NormalMappingDemo" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAAAAAIAAAAAAEAAAAAAAAAAAAAABACACAAAAA=</HashCode>
+      <FileName>NormalMappingDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuadDemo" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAIAAAAAEAAAAAgAAAAAgAAABACAAAAAAA=</HashCode>
+      <FileName>QuadDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SamplerDemo" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAQAIAAAAAEAAAAAgAAAAAgwAADACACAAAEA=</HashCode>
+      <FileName>SamplerDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpecularDemo" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAAAAAIAAAAAAEAAAAAAAAAAAAAABACACAAAAA=</HashCode>
+      <FileName>SpecularDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TextureDemo" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAQAIAAAAAEAAAAAgAAAAAgwAADACACAAAEA=</HashCode>
+      <FileName>TextureDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TriangleDemo" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAgAAAIAAAAAAAAAAAAAAAAAAAAABgCAAAAAAA=</HashCode>
+      <FileName>TriangleDemo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraScript" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>CameraScript.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="InstancingData" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MeshInstanceDemo.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

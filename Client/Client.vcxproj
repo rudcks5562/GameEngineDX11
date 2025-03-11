@@ -155,6 +155,7 @@
     <ClInclude Include="Main.h" />
     <ClInclude Include="MaterialDemo.h" />
     <ClInclude Include="MeshDemo.h" />
+    <ClInclude Include="MeshInstanceDemo.h" />
     <ClInclude Include="NormalDemo.h" />
     <ClInclude Include="NormalMappingDemo.h" />
     <ClInclude Include="pch.h" />
@@ -179,6 +180,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MaterialDemo.cpp" />
     <ClCompile Include="MeshDemo.cpp" />
+    <ClCompile Include="MeshInstanceDemo.cpp" />
     <ClCompile Include="NormalDemo.cpp" />
     <ClCompile Include="NormalMappingDemo.cpp" />
     <ClCompile Include="pch.cpp">
@@ -202,6 +204,7 @@
     <FxCompile Include="..\Shaders\Light_Ambient.fx" />
     <FxCompile Include="..\Shaders\Light_Diffuse.fx" />
     <FxCompile Include="..\Shaders\Light_Specular.fx" />
+    <FxCompile Include="..\Shaders\MeshInstancingDemo.fx" />
     <FxCompile Include="..\Shaders\ModelDemo.fx" />
     <FxCompile Include="..\Shaders\Normal.fx" />
     <FxCompile Include="..\Shaders\NormalMapping.fx" />
@@ -217,6 +220,9 @@
     <FxCompile Include="..\Shaders\Texture.fx" />
     <FxCompile Include="..\Shaders\Terrain.fx" />
     <FxCompile Include="..\Shaders\TweenDemo.fx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
