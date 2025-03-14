@@ -21,7 +21,7 @@ void MeshDemo::Init()
 	_obj->AddComponent(make_shared<MeshRenderer>());
 	{
 		auto shader = make_shared<Shader>(L"Normal.fx");
-		_obj->GetMeshRenderer()->SetShader(shader);
+		//_obj->GetMeshRenderer()->SetShader(shader);
 	}
 	{
 		RESOURCES->Init();
@@ -30,7 +30,7 @@ void MeshDemo::Init()
 	}
 	{
 		auto texture = RESOURCES->Load<Texture>(L"Veigar", L"..\\Resources\\Textures\\veigar.jpg");
-		_obj->GetMeshRenderer()->SetTexture(texture);
+		//_obj->GetMeshRenderer()->SetTexture(texture);
 	}
 }
 

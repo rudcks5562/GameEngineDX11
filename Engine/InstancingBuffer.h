@@ -2,10 +2,11 @@
 
 class VertexBuffer;
 
-struct InstancingData {
+struct InstancingData
+{
 	Matrix world;
-
 };
+
 #define MAX_MESH_INSTANCE 500
 
 class InstancingBuffer
@@ -14,28 +15,26 @@ public:
 	InstancingBuffer();
 	~InstancingBuffer();
 
+private:
+	void CreateBuffer(uint32 maxCount = MAX_MESH_INSTANCE);
+
 public:
 	void ClearData();
 	void AddData(InstancingData& data);
+
 	void PushData();
 
-	//ID
-
 public:
-	uint32 GetCount() { return static_cast<uint32>(_data.size()); }
-	shared_ptr<VertexBuffer> GetBuffer() { return _instanceBuffer; }
- private:
-	//uint 64 _instanceId = 0;
-	shared_ptr<VertexBuffer> _instanceBuffer;
-	uint32 _maxCount = 0;
-	vector<InstancingData> _data;
+	uint32						GetCount() { return static_cast<uint32>(_data.size()); }
+	shared_ptr<VertexBuffer>	GetBuffer() { return _instanceBuffer; }
+
+	void	SetID(uint64 instanceId) { _instanceId = instanceId; }
+	uint64	GetID() { return _instanceId; }
 
 private:
-		void CreateBuffer(uint32 maxCount = MAX_MESH_INSTANCE);
-
-
-
-
-
+	uint64						_instanceId = 0;
+	shared_ptr<VertexBuffer>	_instanceBuffer;
+	uint32						_maxCount = 0;
+	vector<InstancingData>		_data;
 };
 

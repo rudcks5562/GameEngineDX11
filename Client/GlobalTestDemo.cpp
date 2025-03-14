@@ -21,7 +21,7 @@ void GlobalTestDemo::Init()
 	_obj->AddComponent(make_shared<MeshRenderer>());
 	{
 		 _shader = make_shared<Shader>(L"GlobalTest.fx");
-		_obj->GetMeshRenderer()->SetShader(_shader);
+		//_obj->GetMeshRenderer()->SetShader(_shader);
 	}
 	{
 		RESOURCES->Init();
@@ -30,7 +30,7 @@ void GlobalTestDemo::Init()
 	}
 	{
 		auto texture = RESOURCES->Load<Texture>(L"Veigar", L"..\\Resources\\Textures\\veigar.jpg");
-		_obj->GetMeshRenderer()->SetTexture(texture);
+		//_obj->GetMeshRenderer()->SetTexture(texture);
 	}
 	RENDER->Init(_shader);// scene
 }

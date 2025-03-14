@@ -92,8 +92,8 @@ void InstancingDemo::Update()
 
 	//_shader->GetMatrix("World")->SetMatrix((float*)&world);
 
-	_mesh->GetVertexBuffer()->pushData();
-	_instanceBuffer->pushData(); 
+	_mesh->GetVertexBuffer()->PushData();
+	_instanceBuffer->PushData(); 
 	_mesh->GetIndexBuffer()->PushData();
 
 

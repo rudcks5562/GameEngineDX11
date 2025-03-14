@@ -22,16 +22,16 @@ void DepthStencilDemo::Init()
 	_obj->AddComponent(make_shared<MeshRenderer>());
 	{
 		 _shader = make_shared<Shader>(L"GlobalTest.fx");
-		_obj->GetMeshRenderer()->SetShader(_shader);
+		//_obj->GetMeshRenderer()->SetShader(_shader);
 	}
 	{
 
 		auto mesh = RESOURCES->Get<Mesh>(L"Sphere");
-		_obj->GetMeshRenderer()->SetMesh(mesh);
+		//_obj->GetMeshRenderer()->SetMesh(mesh);
 	}
 	{
 		auto texture = RESOURCES->Load<Texture>(L"Veigar", L"..\\Resources\\Textures\\veigar.jpg");
-		_obj->GetMeshRenderer()->SetTexture(texture);
+		//_obj->GetMeshRenderer()->SetTexture(texture);
 	}
 	 //obj2
 	_obj2 = make_shared<GameObject>();
@@ -39,7 +39,7 @@ void DepthStencilDemo::Init()
 	_obj2->AddComponent(make_shared<MeshRenderer>());
 	{
 		//_shader = make_shared<Shader>(L"GlobalTest.fx");
-		_obj2->GetMeshRenderer()->SetShader(_shader);
+		//_obj2->GetMeshRenderer()->SetShader(_shader);
 	}
 	{
 
@@ -48,7 +48,7 @@ void DepthStencilDemo::Init()
 	}
 	{
 		auto texture = RESOURCES->Load<Texture>(L"Veigar", L"..\\Resources\\Textures\\veigar.jpg");
-		_obj2->GetMeshRenderer()->SetTexture(texture);
+		//_obj2->GetMeshRenderer()->SetTexture(texture);
 	}
 
 
