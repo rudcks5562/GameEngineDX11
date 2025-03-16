@@ -142,6 +142,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AmbientDemo.h" />
+    <ClInclude Include="AnimInstancingDemo.h" />
     <ClInclude Include="CameraDemo.h" />
     <ClInclude Include="CameraScript.h" />
     <ClInclude Include="ConstBufferDemo.h" />
@@ -168,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AmbientDemo.cpp" />
+    <ClCompile Include="AnimInstancingDemo.cpp" />
     <ClCompile Include="CameraDemo.cpp" />
     <ClCompile Include="CameraScript.cpp" />
     <ClCompile Include="ConstBufferDemo.cpp" />
@@ -196,6 +198,7 @@
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\Shaders\AnimationDemo.fx" />
+    <FxCompile Include="..\Shaders\AnimInstancingDemo.fx" />
     <FxCompile Include="..\Shaders\ConstBuffer.fx" />
     <FxCompile Include="..\Shaders\Emissive.fx" />
     <FxCompile Include="..\Shaders\Global.fx" />
