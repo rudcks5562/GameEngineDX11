@@ -156,6 +156,7 @@
     <ClInclude Include="MaterialDemo.h" />
     <ClInclude Include="MeshDemo.h" />
     <ClInclude Include="MeshInstanceDemo.h" />
+    <ClInclude Include="ModelInstanceDemo.h" />
     <ClInclude Include="NormalDemo.h" />
     <ClInclude Include="NormalMappingDemo.h" />
     <ClInclude Include="pch.h" />
@@ -181,6 +182,7 @@
     <ClCompile Include="MaterialDemo.cpp" />
     <ClCompile Include="MeshDemo.cpp" />
     <ClCompile Include="MeshInstanceDemo.cpp" />
+    <ClCompile Include="ModelInstanceDemo.cpp" />
     <ClCompile Include="NormalDemo.cpp" />
     <ClCompile Include="NormalMappingDemo.cpp" />
     <ClCompile Include="pch.cpp">
@@ -206,6 +208,7 @@
     <FxCompile Include="..\Shaders\Light_Specular.fx" />
     <FxCompile Include="..\Shaders\MeshInstancingDemo.fx" />
     <FxCompile Include="..\Shaders\ModelDemo.fx" />
+    <FxCompile Include="..\Shaders\ModelInstancingDemo.fx" />
     <FxCompile Include="..\Shaders\Normal.fx" />
     <FxCompile Include="..\Shaders\NormalMapping.fx" />
     <FxCompile Include="..\Shaders\Quad.fx" />
