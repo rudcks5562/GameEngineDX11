@@ -8,6 +8,11 @@
 ModelAnimator::ModelAnimator(shared_ptr<Shader> shader)
 	: Super(ComponentType::Animator), _shader(shader)
 {
+	//test
+	_tweenDesc.next.animIndex = rand() % 3;
+	_tweenDesc.tweenSumTime += rand() % 100;
+
+
 
 }
 
@@ -15,8 +20,85 @@ ModelAnimator::~ModelAnimator()
 {
 
 }
+void ModelAnimator::Update() {
 
-//void ModelAnimator::Update()
+}
+
+void ModelAnimator::UpdateTweenData()
+{ 
+	TweenDesc& desc = _tweenDesc;// 개별 개체마다 애니메이션 필요하므로 개별로 보유.
+
+	desc.curr.sumTime += DT;
+	// 현재 애니메이션
+	{
+		shared_ptr<ModelAnimation> currentAnim = _model->GetAnimationByIndex(desc.curr.animIndex);
+		if (currentAnim)
+		{
+			float timePerFrame = 1 / (currentAnim->frameRate * desc.curr.speed);
+			if (desc.curr.sumTime >= timePerFrame)
+			{
+				desc.curr.sumTime = 0;
+				desc.curr.currFrame = (desc.curr.currFrame + 1) % currentAnim->frameCount;
+				desc.curr.nextFrame = (desc.curr.currFrame + 1) % currentAnim->frameCount;
+			}
+
+			desc.curr.ratio = (desc.curr.sumTime / timePerFrame);
+		}
+	}
+
+	// 다음 애니메이션이 예약 되어 있다면
+	if (desc.next.animIndex >= 0)
+	{
+		desc.tweenSumTime += DT;
+		desc.tweenRatio = desc.tweenSumTime / desc.tweenDuration;
+
+		if (desc.tweenRatio >= 1.f)
+		{
+			// 애니메이션 교체 성공
+			desc.curr = desc.next;
+			desc.ClearNextAnim();
+		}
+		else
+		{
+			// 교체중
+			shared_ptr<ModelAnimation> nextAnim = _model->GetAnimationByIndex(desc.next.animIndex);
+			desc.next.sumTime += DT;
+
+			float timePerFrame = 1.f / (nextAnim->frameRate * desc.next.speed);
+
+			if (desc.next.ratio >= 1.f)
+			{
+				desc.next.sumTime = 0;
+
+				desc.next.currFrame = (desc.next.currFrame + 1) % nextAnim->frameCount;
+				desc.next.nextFrame = (desc.next.currFrame + 1) % nextAnim->frameCount;
+			}
+
+			desc.next.ratio = desc.next.sumTime / timePerFrame;
+		}
+	}
+
+	// Anim Update
+	//ImGui::InputInt("AnimIndex", &desc.curr.animIndex);
+	//_keyframeDesc.animIndex %= _model->GetAnimationCount();
+
+	//static int32 nextAnimIndex = 0;
+	//if (ImGui::InputInt("NextAnimIndex", &nextAnimIndex))
+	//{
+	//	nextAnimIndex %= _model->GetAnimationCount();
+	//	desc.ClearNextAnim(); // 기존꺼 밀어주기
+	//	desc.next.animIndex = nextAnimIndex;
+	//}
+
+	//if (_model->GetAnimationCount() > 0)
+	//	desc.curr.animIndex %= _model->GetAnimationCount();
+
+	//ImGui::InputFloat("Speed", &desc.curr.speed, 0.5f, 4.f);
+
+	//RENDER->PushTweenData(desc);
+}
+
+//void ModelAnimator::Update()// 초기코드: lerp+ tween적용 x
 //{
 //	if (_model == nullptr)
 //		return;
@@ -137,7 +219,7 @@ ModelAnimator::~ModelAnimator()
 //	}
 //}
 /*
-void ModelAnimator::Update()
+void ModelAnimator::Update()// lerp+ tween 적용된 코드 그러나 인스턴싱을 위해 주석처리
 {
 	if (_model == nullptr)
 		return;
@@ -270,78 +352,7 @@ void ModelAnimator::RenderInstancing(shared_ptr<class InstancingBuffer>& buffer)
 	if (_model == nullptr)
 		return;
 	if (_texture == nullptr)
-		CreateTexture();
-
-	TweenDesc& desc = _tweenDesc;
-
-	desc.curr.sumTime += DT;
-	// 현재 애니메이션
-	{
-		shared_ptr<ModelAnimation> currentAnim = _model->GetAnimationByIndex(desc.curr.animIndex);
-		if (currentAnim)
-		{
-			float timePerFrame = 1 / (currentAnim->frameRate * desc.curr.speed);
-			if (desc.curr.sumTime >= timePerFrame)
-			{
-				desc.curr.sumTime = 0;
-				desc.curr.currFrame = (desc.curr.currFrame + 1) % currentAnim->frameCount;
-				desc.curr.nextFrame = (desc.curr.currFrame + 1) % currentAnim->frameCount;
-			}
-
-			desc.curr.ratio = (desc.curr.sumTime / timePerFrame);
-		}
-	}
-
-	// 다음 애니메이션이 예약 되어 있다면
-	if (desc.next.animIndex >= 0)
-	{
-		desc.tweenSumTime += DT;
-		desc.tweenRatio = desc.tweenSumTime / desc.tweenDuration;
-
-		if (desc.tweenRatio >= 1.f)
-		{
-			// 애니메이션 교체 성공
-			desc.curr = desc.next;
-			desc.ClearNextAnim();
-		}
-		else
-		{
-			// 교체중
-			shared_ptr<ModelAnimation> nextAnim = _model->GetAnimationByIndex(desc.next.animIndex);
-			desc.next.sumTime += DT;
-
-			float timePerFrame = 1.f / (nextAnim->frameRate * desc.next.speed);
-
-			if (desc.next.ratio >= 1.f)
-			{
-				desc.next.sumTime = 0;
-
-				desc.next.currFrame = (desc.next.currFrame + 1) % nextAnim->frameCount;
-				desc.next.nextFrame = (desc.next.currFrame + 1) % nextAnim->frameCount;
-			}
-
-			desc.next.ratio = desc.next.sumTime / timePerFrame;
-		}
-	}
-
-	// Anim Update
-	ImGui::InputInt("AnimIndex", &desc.curr.animIndex);
-	_keyframeDesc.animIndex %= _model->GetAnimationCount();
-
-	static int32 nextAnimIndex = 0;
-	if (ImGui::InputInt("NextAnimIndex", &nextAnimIndex))
-	{
-		nextAnimIndex %= _model->GetAnimationCount();
-		desc.ClearNextAnim(); // 기존꺼 밀어주기
-		desc.next.animIndex = nextAnimIndex;
-	}
-
-	if (_model->GetAnimationCount() > 0)
-		desc.curr.animIndex %= _model->GetAnimationCount();
-
-	ImGui::InputFloat("Speed", &desc.curr.speed, 0.5f, 4.f);
-
-	RENDER->PushTweenData(desc);
+		CreateTexture();// 트랜스폼 맵 텍스쳐 생성 -공유 가능
 
 	// SRV를 통해 정보 전달
 	_shader->GetSRV("TransformMap")->SetResource(_srv.Get());
@@ -357,9 +368,6 @@ void ModelAnimator::RenderInstancing(shared_ptr<class InstancingBuffer>& buffer)
 	}
 	RENDER->PushBoneData(boneDesc);
 
-	// Transform
-	auto world = GetTransform()->GetWorldMatrix();
-	RENDER->PushTransformData(TransformDesc{ world });
 
 	const auto& meshes = _model->GetMeshes();
 	for (auto& mesh : meshes)
@@ -370,23 +378,29 @@ void ModelAnimator::RenderInstancing(shared_ptr<class InstancingBuffer>& buffer)
 		// BoneIndex
 		_shader->GetScalar("BoneIndex")->SetInt(mesh->boneIndex);
 
-		uint32 stride = mesh->vertexBuffer->GetStride();
-		uint32 offset = mesh->vertexBuffer->GetOffset();
 
-		DC->IASetVertexBuffers(0, 1, mesh->vertexBuffer->GetComPtr().GetAddressOf(), &stride, &offset);
-		DC->IASetIndexBuffer(mesh->indexBuffer->GetComPtr().Get(), DXGI_FORMAT_R32_UINT, 0);
 
-		_shader->DrawIndexed(0, _pass, mesh->indexBuffer->GetCount(), 0, 0);
+
+		mesh->vertexBuffer->PushData();
+		mesh->indexBuffer->PushData();
+
+		buffer->PushData();
+
+		_shader->DrawIndexedInstanced(0, _pass, mesh->indexBuffer->GetCount(), buffer->GetCount());
+		//uint32 stride = mesh->vertexBuffer->GetStride();
+		//uint32 offset = mesh->vertexBuffer->GetOffset();
+
+		//DC->IASetVertexBuffers(0, 1, mesh->vertexBuffer->GetComPtr().GetAddressOf(), &stride, &offset);
+		//DC->IASetIndexBuffer(mesh->indexBuffer->GetComPtr().Get(), DXGI_FORMAT_R32_UINT, 0);
+
+		//_shader->DrawIndexed(0, _pass, mesh->indexBuffer->GetCount(), 0, 0);
 	}
 
 }
 
 InstanceID ModelAnimator::GetInstanceID()
 {
-
-
 	return make_pair((uint64)_model.get(), (uint64)_shader.get());
-
 }
 
 void ModelAnimator::CreateTexture()

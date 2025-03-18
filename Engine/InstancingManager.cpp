@@ -6,6 +6,7 @@
 #include "ModelRenderer.h"
 #include "Transform.h"
 #include "Camera.h"
+#include "ModelAnimator.h"
 
 void InstancingManager::Render(vector<shared_ptr<GameObject>>& gameObjects)
 {
@@ -115,7 +116,7 @@ void InstancingManager::RenderAnimRenderer(vector<shared_ptr<GameObject>>& gameO
 	for (auto& pair : cache)
 	{
 		const vector<shared_ptr<GameObject>>& vec = pair.second;
-
+		shared_ptr<InstancedTweenDesc> tweenDesc = make_shared<InstancedTweenDesc>();
 		//if (vec.size() == 1)
 		//{
 		//	vec[0]->GetMeshRenderer()->RenderSingle();
@@ -131,7 +132,15 @@ void InstancingManager::RenderAnimRenderer(vector<shared_ptr<GameObject>>& gameO
 				data.world = gameObject->GetTransform()->GetWorldMatrix();
 
 				AddData(instanceId, data);
+
+				gameObject->GetModelAnimator()->UpdateTweenData();
+				TweenDesc& desc=gameObject->GetModelAnimator()->GetTweenDesc();
+
+				tweenDesc->tweens[i] = desc;
+
 			}
+
+			RENDER->PushTweenData(*tweenDesc.get());
 
 			shared_ptr<InstancingBuffer>& buffer = _buffers[instanceId];
 			vec[0]->GetModelAnimator()->RenderInstancing(buffer);
