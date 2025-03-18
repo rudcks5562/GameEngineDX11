@@ -21,7 +21,7 @@ struct VertexMesh // vsin
 	// INSTANCING;
     uint instanceID : SV_INSTANCEID;
     matrix world : INST;
-};// vsout== meshooutput
+}; // vsout== meshooutput
 
 MeshOutput VS_Mesh(VertexMesh input)
 {

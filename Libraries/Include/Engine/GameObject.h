@@ -6,6 +6,8 @@ class Camera;
 class MeshRenderer;
 class ModelRenderer;
 class ModelAnimator;
+class Light;
+
 
 class GameObject : public enable_shared_from_this<GameObject>
 {
@@ -25,6 +27,9 @@ public:
 	shared_ptr<MeshRenderer> GetMeshRenderer();
 	shared_ptr<ModelRenderer> GetModelRenderer();
 	shared_ptr<ModelAnimator> GetModelAnimator();
+	shared_ptr<Light> GetLight();
+
+
 
 	shared_ptr<Transform> GetOrAddTransform();
 	void AddComponent(shared_ptr<Component> component);

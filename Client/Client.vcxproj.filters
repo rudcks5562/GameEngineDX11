@@ -96,6 +96,9 @@
     <ClCompile Include="RenderDemo.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="SceneDemo.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -174,6 +177,9 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="RenderDemo.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneDemo.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>

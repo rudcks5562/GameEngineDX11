@@ -164,6 +164,7 @@
     <ClInclude Include="QuadDemo.h" />
     <ClInclude Include="RenderDemo.h" />
     <ClInclude Include="SamplerDemo.h" />
+    <ClInclude Include="SceneDemo.h" />
     <ClInclude Include="SpecularDemo.h" />
     <ClInclude Include="TextureDemo.h" />
     <ClInclude Include="TriangleDemo.h" />
@@ -194,6 +195,7 @@
     <ClCompile Include="QuadDemo.cpp" />
     <ClCompile Include="RenderDemo.cpp" />
     <ClCompile Include="SamplerDemo.cpp" />
+    <ClCompile Include="SceneDemo.cpp" />
     <ClCompile Include="SpecularDemo.cpp" />
     <ClCompile Include="TextureDemo.cpp" />
     <ClCompile Include="TriangleDemo.cpp" />
