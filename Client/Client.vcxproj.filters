@@ -93,6 +93,9 @@
     <ClCompile Include="AnimInstancingDemo.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="RenderDemo.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -170,6 +173,9 @@
     <ClInclude Include="AnimInstancingDemo.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="RenderDemo.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\Shaders\Triangle.fx">
@@ -243,6 +249,12 @@
     </FxCompile>
     <FxCompile Include="..\Shaders\AnimInstancingDemo.fx">
       <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Shaders\RenderDemo.fx">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Shaders\Render.fx">
+      <Filter>Shader\Common</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>

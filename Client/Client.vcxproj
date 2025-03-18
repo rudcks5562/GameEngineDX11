@@ -162,6 +162,7 @@
     <ClInclude Include="NormalMappingDemo.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="QuadDemo.h" />
+    <ClInclude Include="RenderDemo.h" />
     <ClInclude Include="SamplerDemo.h" />
     <ClInclude Include="SpecularDemo.h" />
     <ClInclude Include="TextureDemo.h" />
@@ -191,6 +192,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="QuadDemo.cpp" />
+    <ClCompile Include="RenderDemo.cpp" />
     <ClCompile Include="SamplerDemo.cpp" />
     <ClCompile Include="SpecularDemo.cpp" />
     <ClCompile Include="TextureDemo.cpp" />
@@ -215,6 +217,8 @@
     <FxCompile Include="..\Shaders\Normal.fx" />
     <FxCompile Include="..\Shaders\NormalMapping.fx" />
     <FxCompile Include="..\Shaders\Quad.fx" />
+    <FxCompile Include="..\Shaders\Render.fx" />
+    <FxCompile Include="..\Shaders\RenderDemo.fx" />
     <FxCompile Include="..\Shaders\Sampler.fx" />
     <FxCompile Include="..\Shaders\SkyDemo.fx" />
     <FxCompile Include="..\Shaders\Triangle.fx">
